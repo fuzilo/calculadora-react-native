@@ -4,7 +4,7 @@ import {View, Text, TextInput, Button, StyleSheet} from 'reactive-native'
 export default function Calculator() {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
-    const [selectedOperation, selectedOperation]= useState(null)
+    const [selectedOperation, setSelectedOperation]= useState(null)
     const [result, setResult] = useState(null)
 
     const calculateResult = () => {
@@ -30,7 +30,7 @@ export default function Calculator() {
     }
 
     return(
-    <View style={style.container}>
+    <View style={styles.container}>
         <View style={styles.card}>
             <Text style={styles.resultText}>
                 {result !== null ? result.toString(): 'resultado aqui'}
@@ -69,3 +69,41 @@ const OperationButton = ({operation, onPress}) => (
         <Button title = {operation} onPress ={onPress} />
     </View>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    width: '100%',
+    padding: 20,
+    marginBottom: 20,
+    backgroundColor: '#fff',
+    elevation: 4,
+    alignItems: 'center',
+  },
+  resultText: {
+    fontSize: 24,
+  },
+  input: {
+    width: '100%',
+    padding: 10,
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 5,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20,
+    width: '100%',
+  },
+  operationButton: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+});
